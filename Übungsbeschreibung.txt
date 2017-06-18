@@ -7,7 +7,7 @@ Das Unternehmen hat schon konkreten Anforderungen von 2 Kunden bekommen.
 Weitere Verträge mit 20 Kunden stehen vor der Tür. 
  
 Es steht aber noch nicht fest, ob das Unternehmen diese 20 Kunden gewinnt, 
-weil ein Konkurrenzunternehmen auch für das um diese potenziellen Kunden kämpft.
+weil ein Konkurrenzunternehmen auch um das Gewinnen dieser potenziellen Kunden kämpft.
  
 Der einzige Entwickler im Unternehmen liegt im Koma nach einem Busunfall.
 Er hat kurz vor dem Unfall mit der Umsetzung angefangen. Er hat den folgenden Features, die von Kunden angefordert sind umgesetzt. 

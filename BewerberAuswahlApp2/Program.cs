@@ -1,11 +1,11 @@
 ﻿using System.Linq;
 using PersonLibrary;
 
-namespace BewerberAuswahlApp2
+namespace Kunde2.BewerberAuswahl.UI
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             var umlaute = new char[] { 'ö', 'ü', 'ä' };
 

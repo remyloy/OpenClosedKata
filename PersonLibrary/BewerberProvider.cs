@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace PersonLibrary
 {
@@ -10,7 +11,9 @@ namespace PersonLibrary
         public static List<Person> HoleListeDerBewerber(string dateiPfad)
         {
             var result = new List<Person>();
-            var lines = File.ReadAllLines(dateiPfad).Select(a => a.Split(';'));
+
+            var windowsEncoding = Encoding.GetEncoding(1250);
+            var lines = File.ReadAllLines(dateiPfad, windowsEncoding).Select(a => a.Split(';'));
             foreach (var personDatenLine in lines)
             {
                 var alter = int.Parse(personDatenLine[0]);
