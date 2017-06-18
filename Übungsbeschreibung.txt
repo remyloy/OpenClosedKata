@@ -1,64 +1,42 @@
-Es wurde ein Startup-Unternehmen in einem seltsamen Land gegründet. 
-Das Land heißt Urras und die offiziele Sprache in diesem Land ist Deutsch.
- 
-Im Urras gibt's eine Marktlücke bei Bewerbungsverfahren-Software.
- 
-Das Unternehmen hat schon konkreten Anforderungen von 2 Kunden bekommen. 
-Weitere Verträge mit 20 Kunden stehen vor der Tür. 
- 
-Es steht aber noch nicht fest, ob das Unternehmen diese 20 Kunden gewinnt, 
-weil ein Konkurrenzunternehmen auch um das Gewinnen dieser potenziellen Kunden kämpft.
- 
-Der einzige Entwickler im Unternehmen liegt im Koma nach einem Busunfall.
-Er hat kurz vor dem Unfall mit der Umsetzung angefangen. Er hat den folgenden Features, die von Kunden angefordert sind umgesetzt. 
-Diese sind aber noch nicht ausgeliefert.
+Vorgeschichte:
+Es wurde ein Startup-Unternehmen in einem seltsamen Land gegründet. Das Land heißt Urras und die offizielle Sprache in diesem Land ist Deutsch. Im Urras gibt's eine Marktlücke bei Bewerbungsverfahren-Software.
+Das Unternehmen hat schon konkreten Anforderungen von 2 Kunden bekommen. Weitere Verträge mit 20 Kunden stehen vor der Tür. Es steht aber noch nicht fest, ob das Unternehmen diese 20 Kunden gewinnt, weil ein Konkurrenzunternehmen auch um das Gewinnen dieser potenziellen Kunden kämpft.
 
-Der Entwickler war fest davon überzeugt, dass die Firma keine neuen Kunden gewinnen kann. 
-Da die Schmerzgrenzen der beiden Kunden sehr hoch sind, und er alles allein meistern konnte, 
-hat er sich keine Gedanken über die interne Codequalität gemacht. 
-Für ihn war Termintreue und Funktionalität wichtiger als Codequalität.
+Der einzige Entwickler im Unternehmen liegt im Koma nach einem Busunfall. Er hat kurz vor dem Unfall mit der Umsetzung angefangen. Er hat den folgenden Features, die von Kunden angefordert sind umgesetzt. Diese sind aber noch nicht ausgeliefert.
+Der Entwickler war fest davon überzeugt, dass die Firma keine neuen Kunden gewinnen kann. Da die Schmerzgrenzen der beiden Kunden sehr hoch sind, und er alles allein meistern konnte, hat er sich keine Gedanken über die interne Codequalität gemacht. Für ihn war Termintreue und Funktionalität wichtiger als Codequalität.
  
+Anforderungen, die schon umgesetzt wurden:
 Anforderungen von Kunde1:
-	Eine Konsolenanwendung, die Name und Alter der aktuellen Bewerber aus einer CSV-Datei liest, die Bewerberdaten nach den folgenden Kriterien validiert und
-	entsprechende Meldungen in der Konsole ausgibt. Die Auswahl-Kriterien sind:
-		
+Eine Konsolenanwendung, die Name und Alter der aktuellen Bewerber aus einer CSV-Datei liest, die Bewerberdaten nach den folgenden Kriterien validiert und entsprechende Meldungen in der Konsole ausgibt. Die Auswahl-Kriterien sind:
 		1) Namen mit Umlauten haben bei uns keine Chance. 
 		2) Bewerber über 38 haben bei uns keine Chance.
  
 Anforderungen von Kunde2: 
-	Eine Konsolenanwendung, die Name, Alter und E-Mail Adresse der aktuellen Bewerber aus einer CSV-Datei liest, 
-	die Bewerberdaten nach den folgenden Kriterien validiert und an die Bewerber, die den folgenden Auswahl-Kriterien erfüllen, eine Einladung per Mail schickt.
-	
+Eine Konsolenanwendung, die Name, Alter und E-Mail Adresse der aktuellen Bewerber aus einer CSV-Datei liest, die Bewerberdaten nach den folgenden Kriterien validiert und an die Bewerber, die den folgenden Auswahl-Kriterien erfüllen, eine Einladung per Mail schickt.
 		1) Bewerber, die älter als 25 sind, haben bei uns keine Chance.
 		2) Bewerber, die Carsten heißen, haben bei uns keine Chance.
 		3) Namen mit Umlauten haben bei uns keine Chance.
 
+Aufgaben:
+Der Geschäftsführer hat eine Affinität zum Clean Code und hat dich und deinen Kollege angestellt um drei Aufgaben zu erledigen: 
+1) Ihr müsst als erstes Code/Struktur so aufbauen, dass man am Ende eine wartbare, erweiterbare, Code/Struktur und Architektur hat.
+2) Nach der Auslieferung der Produkte müsst ihr weitere Anforderungen/Erweiterungen umsetzen.
+	i) Kunde 1 = Bewerber, deren Name mit Do oder Re anfangen, haben bei uns keine Chancen.
+	ii) Kunde 2 = Bewerber, die Michael heißen werden sofort ohne Bewerbungsgespräch angestellt. Die bekommen ein Mail mit dem Betreff "Einladung zur Gehaltsverhandlung"
 
-Aktuelle Situation:
-Der Geschäftsführer hat eine Affinität zum Clean Code und hat dich und deinen Kollege angestellt um die Auslieferung zu Ende zu bringen.
+Punkte, die unbedingt beachtet werden müssen:
+Beim Meistern der Aufgaben müssen die folgenden Punkte unbedingt beachtet werden:
+ 1) Ihr sollt eine erweiterbare Architektur mit sauberem und wartbarem Code aufbauen.
+ 2) Ihr dürft Open/Closed und SRP Prinzipen nie aber nie verletzen. Für jede Verletzung der Prinzipien werden von eurem Gehalt 1500€ abgezogen.
+ 3) Ihr könnt die vorhandenen Klassen, Schnittstellen und Code nutzen oder aber auch komplett auf der grünen Wiese anfangen. Das ist euch überlassen.
+ 4) Ihr habt einen Festgehalt. Ihr werdet aber pro automatisiertem Entwicklertest (mit NUnit) 2000€ Bonus bekommen.
+ 5) Ihr braucht Visual Studio ab VS-2015 und Resharper. Die Programmiersprache ist C#. dotnet Framework ab 4.5
+ 6) Exception und Fehlerbehandlung ist nicht wichtig. Diese kannst du ignorieren.
 
-Ihr müsst als erstes Code/Struktur so aufbauen, dass man am Ende eine wartbare, erweiterbare, Code/Struktur und Architektur hat.
 
-Nach der Auslieferung der Produkte müsst ihr die folgenden Anforderungen/Erweiterungen umsetzen.
 
-	1) Kunde 1 = Bewerber, deren Name mit Do oder Re anfangen, haben bei uns keine Chancen.
-	2) Kunde 2 = Bewerber, die Michael heißen werden sofort ohne Bewerbungsgespräch angestellt. Die bekommen ein Mail mit dem Betreff "Einladung zur Gehaltsverhandlung"
+	
  
 
-Beim Meistern der Aufgabe müssen die folgenden Punkte unbedingt beachtet werden:
- 
-1) Ihr sollt eine erweiterbare Architektur mit sauberem und wartbarem Code aufbauen.
- 
-2) Ihr dürft Open/Closed und SRP Prinzipen nie aber nie verletzen. Für jede Verletzung der Prinzipien werden von eurem Gehalt 1500€ abgezogen.
- 
-4) Ihr könnt die vorhandenen Klassen, Schnittstellen und Code nutzen oder aber auch komplett auf der grünen Wiese anfangen. Das ist euch überlassen.
- 
-5) Ihr habt einen Festgehalt. Ihr werdet aber pro automatisiertem Entwicklertest (mit NUnit) 2000€ Bonus bekommen.
- 
-5) Ihr braucht Visual Studio ab VS-2015 und Resharper. Die Programmiersprache ist C#. dotnet Framework ab 4.5
- 
-6) Exception und Fehlerbehandlung ist nicht wichtig. Diese kannst du ignorieren.
- 
- 
- 
+
 
