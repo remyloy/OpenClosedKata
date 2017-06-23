@@ -41,6 +41,7 @@ type LogicTests() =
         match result with
         | Valid -> Assert.Fail()
         | Error e -> Assert.Pass()
+        | Skip -> Assert.Fail()
 
     [<Test>]
     static member ``filterHasUmlaut passes with Hans`` () =
@@ -51,6 +52,7 @@ type LogicTests() =
         match result with
         | Valid -> Assert.Pass()
         | Error e -> Assert.Fail(e |> string)
+        | Skip -> Assert.Fail()
 
     [<Test>]
     static member ``filterTooOld passes with Hans`` () =
@@ -61,6 +63,7 @@ type LogicTests() =
         match result with
         | Valid -> Assert.Pass()
         | Error e -> Assert.Fail(e |> string)
+        | Skip -> Assert.Fail()
 
     [<Test>]
     static member ``filterTooOld fails with Maurice`` () =
@@ -71,6 +74,7 @@ type LogicTests() =
         match result with
         | Valid -> Assert.Fail()
         | Error e -> Assert.Pass()
+        | Skip -> Assert.Fail()
 
     [<Test>]
     static member ``filterByNames passes with Hans`` () =
@@ -81,6 +85,7 @@ type LogicTests() =
         match result with
         | Valid -> Assert.Pass()
         | Error e -> Assert.Fail(e |> string)
+        | Skip -> Assert.Fail()
 
     [<Test>]
     static member ``filterByNames fails with Carsten`` () =
@@ -91,3 +96,4 @@ type LogicTests() =
         match result with
         | Valid -> Assert.Fail()
         | Error e -> Assert.Pass()
+        | Skip -> Assert.Fail()

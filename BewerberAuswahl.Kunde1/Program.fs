@@ -18,6 +18,8 @@ module CLI =
         match v with
         | Valid ->
             "-/-"
+        | Skip -> 
+            "-/-"
         | Error e ->
             e
 

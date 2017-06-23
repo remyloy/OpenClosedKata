@@ -101,11 +101,16 @@ module Logic =
 
     let combine : List<FilterCriteria<'a>> -> FilterCriteria<'a> =
         let folder result filter =
-            match result.Validation with
-            | Valid ->                
-                { result with Validation = filter result.Value }
-            | Error _ ->
+            match result.Validation, filter result.Value with
+            | Skip, _ ->
                 result
+            | _, Skip ->
+                { result with Validation = Skip }                
+            | Valid, (_ as v) ->                
+                { result with Validation = v }
+            | Error _, _ ->
+                result
+
         fun filters ->
             fun candidate ->
                 let validationResult =

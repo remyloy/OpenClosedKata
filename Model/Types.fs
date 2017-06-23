@@ -12,6 +12,7 @@ type Candidate =
 type ValidationResult<'a>
     = Valid 
     | Error of 'a
+    | Skip
 
 type Validated<'a, 'b> =
     { Value : 'a
