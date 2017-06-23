@@ -8,7 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 		Übungsbeschreibung.txt = Übungsbeschreibung.txt
 	EndProjectSection
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "BewerberAuswahl.Model", "Model\BewerberAuswahl.Model.fsproj", "{CDDDF45C-335A-423C-85D2-6B5419667FEF}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "BewerberAuswahl.Model", "BewerberAuswahl.Model\BewerberAuswahl.Model.fsproj", "{CDDDF45C-335A-423C-85D2-6B5419667FEF}"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "BewerberAuswahl.Logic", "BewerberAuswahl.Logic\BewerberAuswahl.Logic.fsproj", "{D6F0A958-C6C8-4505-9D3B-FB7A86E9B0BC}"
 EndProject

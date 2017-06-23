@@ -82,7 +82,7 @@
       <Project>{d6f0a958-c6c8-4505-9d3b-fb7a86e9b0bc}</Project>
       <Private>True</Private>
     </ProjectReference>
-    <ProjectReference Include="..\Model\BewerberAuswahl.Model.fsproj">
+    <ProjectReference Include="..\BewerberAuswahl.Model\BewerberAuswahl.Model.fsproj">
       <Name>BewerberAuswahl.Model</Name>
       <Project>{cdddf45c-335a-423c-85d2-6b5419667fef}</Project>
       <Private>True</Private>

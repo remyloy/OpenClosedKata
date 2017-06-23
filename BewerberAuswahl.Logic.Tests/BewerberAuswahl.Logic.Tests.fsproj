@@ -58,7 +58,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Model\BewerberAuswahl.Model.fsproj">
+    <ProjectReference Include="..\BewerberAuswahl.Model\BewerberAuswahl.Model.fsproj">
       <Name>BewerberAuswahl.Model</Name>
       <Project>{cdddf45c-335a-423c-85d2-6b5419667fef}</Project>
       <Private>True</Private>
