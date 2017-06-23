@@ -4,12 +4,34 @@ module Logic =
     open System
     open System.IO
 
-    let createCandidate : CreateCandidate =
-        fun age name email -> 
-            { Age = age
-            ; Name = name
-            ; Email = email 
+    let createAge : int -> Option<Age> =
+        fun age ->
+            if age >= 0 || age < 130 then Age age |> Some
+            else None
+     
+    let createEmail : string -> Option<Email> =
+        fun email ->
+            if email.Contains("@") then Email email |> Some
+            else None
+
+    let tryCreateCandidate : TryCreateCandidate =
+        let (<!>) = Option.map
+        let (<*>) = Option.apply
+        let create a n e =
+            { Age = a
+            ; Name = n
+            ; Email = e
             }
+        fun age name email ->
+            let age =
+                createAge age
+            let name =
+                Some name
+            let email = 
+                email
+                |> Option.bind createEmail 
+                |>  Some
+            create <!> age <*> name <*> email
 
     let parseCSV : char -> ParseCSV =
         let tryParseInt s =
@@ -34,9 +56,9 @@ module Logic =
 
         let (<!>) = Option.map
         let (<*>) = Option.apply
-
-        let tryCreateCandidate (age, name, email) = 
-            createCandidate <!> age <*> name <*> Some email
+        let tryCreateCandidate (a,n,e) =
+            tryCreateCandidate <!> a <*> n <*> Some e
+            |> Option.flatten
 
         fun seperator ->
             let split (line : string) =
@@ -60,3 +82,10 @@ module Logic =
             |> fun set ->
             if Set.isEmpty set then Valid 
             else candidate.Name |> HasUmlaut |> Error
+
+    let validateAge : Age -> FilterCriteria =
+        fun (Age maximumAge) ->
+            fun candidate ->
+                let (Age age) = candidate.Age
+                if age <= maximumAge then Valid
+                else age |> Age |> TooOld |> Error

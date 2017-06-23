@@ -1,13 +1,17 @@
 ﻿namespace BewerberAuswahl
 
+type Age = Age of int
+
+type Email = Email of string
+
 type Candidate =
     { Name : string
-    ; Age : int
-    ; Email : Option<string>
+    ; Age : Age
+    ; Email : Option<Email>
     }
 
 type ValidationError
-    = TooOld of int
+    = TooOld of Age
     | HasUmlaut of string
 
 type ValidationResult
@@ -21,7 +25,8 @@ type Validated<'a> =
 
 type ValidatedCandidate = Validated<Candidate>
 
-type CreateCandidate = int -> string -> Option<string> -> Candidate
+type TryCreateCandidate = int -> string -> Option<string> -> Option<Candidate>
+
 type ParseCSV = string -> List<Candidate>
 type FilterCriteria = Candidate -> ValidationResult
 type Filter = FilterCriteria -> List<Candidate> -> List<ValidatedCandidate>

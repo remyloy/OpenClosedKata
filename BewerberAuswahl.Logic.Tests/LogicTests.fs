@@ -6,7 +6,10 @@ open System.Reflection
 open System.IO
 
 [<TestFixture>]
-type LogicTests() = 
+type LogicTests() =
+    static member candidate (age, name, ?email) =
+        { Age = Age age; Name = name; Email = email |> Option.map Email }
+
     [<Test>]
     static member parseCSV () =
         let baseDir = 
@@ -15,16 +18,16 @@ type LogicTests() =
             Path.Combine(baseDir, "BewerberListe.csv")
         let persons = Logic.parseCSV ';' csvPath
         let expected =  
-            [{Age=20;Name="Hans";Email=None}
-            ;{Age=30;Name="Carsten";Email=None}
-            ;{Age=25;Name="Özgür";Email=None}
-            ;{Age=26;Name="Ursula";Email=None}
-            ;{Age=49;Name="Maurice";Email=None}
-            ;{Age=20;Name="Hans";Email=Some "HansBVB@google.de"}
-            ;{Age=30;Name="Carsten";Email=Some "CarstenLucky@alter.com"}
-            ;{Age=25;Name="Özgür";Email=Some "fuzuli@fuzuli.de"}
-            ;{Age=26;Name="Ursula";Email=Some "ursula@yahoo.com"}
-            ;{Age=49;Name="Maurice";Email=Some "maurice@cloudworld.us"}
+            [LogicTests.candidate (20, "Hans")
+            ;LogicTests.candidate (30, "Carsten")
+            ;LogicTests.candidate (25, "Özgür")
+            ;LogicTests.candidate (26, "Ursula")
+            ;LogicTests.candidate (49, "Maurice")
+            ;LogicTests.candidate (20, "Hans", "HansBVB@google.de")
+            ;LogicTests.candidate (30, "Carsten", "CarstenLucky@alter.com")
+            ;LogicTests.candidate (25, "Özgür", "fuzuli@fuzuli.de")
+            ;LogicTests.candidate (26, "Ursula", "ursula@yahoo.com")
+            ;LogicTests.candidate (49, "Maurice", "maurice@cloudworld.us")
             ]
         let condition = persons = expected
         Assert.IsTrue(condition)
@@ -32,7 +35,7 @@ type LogicTests() =
     [<Test>]
     static member ``validateUmlaut fails with Özgür`` () =
         let candidate =
-            {Age=25;Name="Özgür";Email=None}
+            LogicTests.candidate (25, "Özgür")
         let result =
             Logic.validateUmlaut candidate
         match result with
@@ -42,9 +45,30 @@ type LogicTests() =
     [<Test>]
     static member ``validateUmlaut passes with Hans`` () =
         let candidate =
-            {Age=20;Name="Hans";Email=None}
+            LogicTests.candidate (20, "Hans")
         let result =
             Logic.validateUmlaut candidate
         match result with
         | Valid -> Assert.Pass()
         | Error e -> Assert.Fail(e |> string)
+
+    [<Test>]
+    static member ``validateAge passes with Hans`` () =
+        let candidate =
+            LogicTests.candidate (20, "Hans")
+        let result =
+            Logic.validateAge (Age 38) candidate
+        match result with
+        | Valid -> Assert.Pass()
+        | Error e -> Assert.Fail(e |> string)
+
+    [<Test>]
+    static member ``validateAge fails with Maurice`` () =
+        let candidate =
+            LogicTests.candidate (49, "Maurice")
+        let result =
+            Logic.validateAge (Age 38) candidate
+        match result with
+        | Valid -> Assert.Fail()
+        | Error e -> Assert.Pass()
+    
