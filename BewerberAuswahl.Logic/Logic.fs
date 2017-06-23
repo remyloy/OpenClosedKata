@@ -1,14 +1,5 @@
 ﻿namespace BewerberAuswahl
 
-module Option =
-    let apply f o =
-        match f, o with
-        | Some f, Some o ->
-            f o 
-            |> Some
-        | _ -> 
-            None
-
 module Logic =
     open System
     open System.IO
@@ -20,13 +11,13 @@ module Logic =
             ; Email = email 
             }
 
-    let tryParseInt s =
-        let result, name = Int32.TryParse s
-        match result, name with 
-        | true, name -> Some name 
-        | false, _ -> None
-
     let parseCSV : char -> ParseCSV =
+        let tryParseInt s =
+            let result, name = Int32.TryParse s
+            match result, name with 
+            | true, name -> Some name 
+            | false, _ -> None
+
         let tokenize tokens =
             let age =
                 tokens 
@@ -39,6 +30,7 @@ module Logic =
                 tokens 
                 |> Array.tryItem 2
             age, name, email
+
 
         let (<!>) = Option.map
         let (<*>) = Option.apply
@@ -57,8 +49,14 @@ module Logic =
                 |> Seq.choose tryCreateCandidate
                 |> Seq.toList
 
-module Program =
-    [<EntryPoint>]
-    let main argv = 
-        printfn "%A" argv
-        0 // return an integer exit code
+    let validateUmlaut : FilterCriteria =
+        let umlaute = 
+            ['ä';'ö';'ü'] 
+            |> Set.ofList
+        fun candidate ->
+            candidate.Name
+            |> Set.ofSeq
+            |> Set.intersect umlaute
+            |> fun set ->
+            if Set.isEmpty set then Valid 
+            else candidate.Name |> HasUmlaut |> Error

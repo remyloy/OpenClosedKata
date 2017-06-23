@@ -12,7 +12,7 @@ type ValidationError
 
 type ValidationResult
     = Valid 
-    | Error
+    | Error of ValidationError
 
 type Validated<'a> =
     { Value : 'a

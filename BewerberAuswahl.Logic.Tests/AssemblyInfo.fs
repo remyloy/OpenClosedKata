@@ -1,4 +1,4 @@
-﻿namespace BewerberAuswahl.Logic.Tests.AssemblyInfo
+﻿namespace BewerberAuswahl.AssemblyInfo
 
 open System.Reflection
 open System.Runtime.CompilerServices

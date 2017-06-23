@@ -28,3 +28,23 @@ type LogicTests() =
             ]
         let condition = persons = expected
         Assert.IsTrue(condition)
+
+    [<Test>]
+    static member ``validateUmlaut fails with Özgür`` () =
+        let candidate =
+            {Age=25;Name="Özgür";Email=None}
+        let result =
+            Logic.validateUmlaut candidate
+        match result with
+        | Valid -> Assert.Fail()
+        | Error e -> Assert.Pass()
+
+    [<Test>]
+    static member ``validateUmlaut passes with Hans`` () =
+        let candidate =
+            {Age=20;Name="Hans";Email=None}
+        let result =
+            Logic.validateUmlaut candidate
+        match result with
+        | Valid -> Assert.Pass()
+        | Error e -> Assert.Fail(e |> string)
