@@ -71,7 +71,7 @@ module Logic =
                 |> Seq.choose tryCreateCandidate
                 |> Seq.toList
 
-    let validateUmlaut : FilterCriteria =
+    let filterHasUmlaut : FilterCriteria =
         let umlaute = 
             ['ä';'ö';'ü'] 
             |> Set.ofList
@@ -83,9 +83,18 @@ module Logic =
             if Set.isEmpty set then Valid 
             else candidate.Name |> HasUmlaut |> Error
 
-    let validateAge : Age -> FilterCriteria =
+    let filterTooOld : Age -> FilterCriteria =
         fun (Age maximumAge) ->
             fun candidate ->
                 let (Age age) = candidate.Age
                 if age <= maximumAge then Valid
                 else age |> Age |> TooOld |> Error
+
+    let filterByNames : Set<string> -> FilterCriteria =
+        fun blacklist ->
+            fun candidate ->
+                match Set.contains candidate.Name blacklist with
+                | true ->
+                    candidate.Name |> Blacklisted |> Error
+                | false ->
+                    Valid

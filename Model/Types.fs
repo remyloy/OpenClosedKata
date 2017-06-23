@@ -13,6 +13,7 @@ type Candidate =
 type ValidationError
     = TooOld of Age
     | HasUmlaut of string
+    | Blacklisted of string
 
 type ValidationResult
     = Valid 

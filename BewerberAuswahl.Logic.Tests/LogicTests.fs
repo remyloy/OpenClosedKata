@@ -33,42 +33,61 @@ type LogicTests() =
         Assert.IsTrue(condition)
 
     [<Test>]
-    static member ``validateUmlaut fails with Özgür`` () =
+    static member ``filterHasUmlaut fails with Özgür`` () =
         let candidate =
             LogicTests.candidate (25, "Özgür")
         let result =
-            Logic.validateUmlaut candidate
+            Logic.filterHasUmlaut candidate
         match result with
         | Valid -> Assert.Fail()
         | Error e -> Assert.Pass()
 
     [<Test>]
-    static member ``validateUmlaut passes with Hans`` () =
+    static member ``filterHasUmlaut passes with Hans`` () =
         let candidate =
             LogicTests.candidate (20, "Hans")
         let result =
-            Logic.validateUmlaut candidate
+            Logic.filterHasUmlaut candidate
         match result with
         | Valid -> Assert.Pass()
         | Error e -> Assert.Fail(e |> string)
 
     [<Test>]
-    static member ``validateAge passes with Hans`` () =
+    static member ``filterTooOld passes with Hans`` () =
         let candidate =
             LogicTests.candidate (20, "Hans")
         let result =
-            Logic.validateAge (Age 38) candidate
+            Logic.filterTooOld (Age 38) candidate
         match result with
         | Valid -> Assert.Pass()
         | Error e -> Assert.Fail(e |> string)
 
     [<Test>]
-    static member ``validateAge fails with Maurice`` () =
+    static member ``filterTooOld fails with Maurice`` () =
         let candidate =
             LogicTests.candidate (49, "Maurice")
         let result =
-            Logic.validateAge (Age 38) candidate
+            Logic.filterTooOld (Age 38) candidate
         match result with
         | Valid -> Assert.Fail()
         | Error e -> Assert.Pass()
-    
+
+    [<Test>]
+    static member ``filterByNames passes with Hans`` () =
+        let candidate =
+            LogicTests.candidate (20, "Hans")
+        let result =
+            Logic.filterByNames (["Carsten"] |> Set.ofList) candidate
+        match result with
+        | Valid -> Assert.Pass()
+        | Error e -> Assert.Fail(e |> string)
+
+    [<Test>]
+    static member ``filterByNames fails with Carsten`` () =
+        let candidate =
+            LogicTests.candidate (30, "Carsten")
+        let result =
+            Logic.filterByNames (["Carsten"] |> Set.ofList) candidate
+        match result with
+        | Valid -> Assert.Fail()
+        | Error e -> Assert.Pass()
