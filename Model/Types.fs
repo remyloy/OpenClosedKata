@@ -9,26 +9,21 @@ type Candidate =
     ; Email : Option<Email>
     }
 
-type ValidationError
-    = TooOld of Age
-    | HasUmlaut of string
-    | Blacklisted of string
-
-type ValidationResult
+type ValidationResult<'a>
     = Valid 
-    | Error of ValidationError
+    | Error of 'a
 
-type Validated<'a> =
+type Validated<'a, 'b> =
     { Value : 'a
-    ; Validation : ValidationResult 
+    ; Validation : ValidationResult<'b>
     }
 
-type ValidatedCandidate = Validated<Candidate>
+type ValidatedCandidate<'a> = Validated<Candidate, 'a>
 
 type TryCreateCandidate = int -> string -> Option<string> -> Option<Candidate>
 
 type ParseCSV = string -> List<Candidate>
-type FilterCriteria = Candidate -> ValidationResult
-type CombineFilters = List<FilterCriteria> -> FilterCriteria
-type Filter = FilterCriteria -> List<Candidate> -> List<ValidatedCandidate>
-type GenerateOutput = List<ValidatedCandidate> -> unit
+type FilterCriteria<'a> = Candidate -> ValidationResult<'a>
+type CombineFilters<'a> = List<FilterCriteria<'a>> -> FilterCriteria<'a>
+type Filter<'a> = FilterCriteria<'a> -> List<Candidate> -> List<ValidatedCandidate<'a>>
+type GenerateOutput<'a> = List<ValidatedCandidate<'a>> -> unit

@@ -1,5 +1,4 @@
 ﻿open BewerberAuswahl
-open System
 
 let sendEmail candidates =
     candidates
@@ -12,7 +11,11 @@ let sendEmail candidates =
 [<EntryPoint>]
 let main argv = 
     let filters =
-        Logic.combine [Logic.filterHasUmlaut; Logic.filterTooOld (Age 25); Logic.filterByNames (["Carsten"] |> Set.ofList)]
+        Logic.combine 
+            [ Logic.filterHasUmlaut ignore
+            ; Logic.filterTooOld ignore (Age 25)
+            ; Logic.filterByNames ignore (["Carsten"] |> Set.ofList)
+            ]
 
     Logic.parseCSV ';' "BewerberListe.csv"
     |> Logic.validate filters

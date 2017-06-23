@@ -71,35 +71,35 @@ module Logic =
                 |> Seq.choose tryCreateCandidate
                 |> Seq.toList
 
-    let filterHasUmlaut : FilterCriteria =
+    let filterHasUmlaut (errorMessage :string -> 'a) : FilterCriteria<'a> =
         let umlaute = 
             ['ä';'ö';'ü'] 
             |> Set.ofList
         fun candidate ->
-            candidate.Name
-            |> Set.ofSeq
-            |> Set.intersect umlaute
-            |> fun set ->
-            if Set.isEmpty set then Valid 
-            else candidate.Name |> HasUmlaut |> Error
+                candidate.Name
+                |> Set.ofSeq
+                |> Set.intersect umlaute
+                |> fun set ->
+                if Set.isEmpty set then Valid 
+                else errorMessage candidate.Name |> Error
 
-    let filterTooOld : Age -> FilterCriteria =
-        fun (Age maximumAge) ->
+    let filterTooOld : (Age -> 'a) -> Age -> FilterCriteria<'a> =
+        fun errorMessage (Age maximumAge) ->
             fun candidate ->
                 let (Age age) = candidate.Age
                 if age <= maximumAge then Valid
-                else age |> Age |> TooOld |> Error
+                else  errorMessage (candidate.Age) |> Error
 
-    let filterByNames : Set<string> -> FilterCriteria =
-        fun blacklist ->
+    let filterByNames : (string -> 'a) -> Set<string> -> FilterCriteria<'a> =
+        fun errorMessage blacklist ->
             fun candidate ->
                 match Set.contains candidate.Name blacklist with
                 | true ->
-                    candidate.Name |> Blacklisted |> Error
+                     errorMessage candidate.Name |> Error
                 | false ->
                     Valid
 
-    let combine : List<FilterCriteria> -> FilterCriteria =
+    let combine : List<FilterCriteria<'a>> -> FilterCriteria<'a> =
         let folder result filter =
             match result.Validation with
             | Valid ->                
@@ -113,7 +113,7 @@ module Logic =
                     |> List.fold folder { Value = candidate; Validation = Valid }
                 validationResult.Validation
 
-    let validate : Filter =
+    let validate : Filter<'a> =
         fun filter candidates ->
             candidates
             |> List.map (fun candidate -> { Value = candidate; Validation = filter candidate })

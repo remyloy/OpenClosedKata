@@ -37,7 +37,7 @@ type LogicTests() =
         let candidate =
             LogicTests.candidate (25, "Özgür")
         let result =
-            Logic.filterHasUmlaut candidate
+            Logic.filterHasUmlaut ignore candidate
         match result with
         | Valid -> Assert.Fail()
         | Error e -> Assert.Pass()
@@ -47,7 +47,7 @@ type LogicTests() =
         let candidate =
             LogicTests.candidate (20, "Hans")
         let result =
-            Logic.filterHasUmlaut candidate
+            Logic.filterHasUmlaut ignore candidate
         match result with
         | Valid -> Assert.Pass()
         | Error e -> Assert.Fail(e |> string)
@@ -57,7 +57,7 @@ type LogicTests() =
         let candidate =
             LogicTests.candidate (20, "Hans")
         let result =
-            Logic.filterTooOld (Age 38) candidate
+            Logic.filterTooOld ignore (Age 38) candidate
         match result with
         | Valid -> Assert.Pass()
         | Error e -> Assert.Fail(e |> string)
@@ -67,7 +67,7 @@ type LogicTests() =
         let candidate =
             LogicTests.candidate (49, "Maurice")
         let result =
-            Logic.filterTooOld (Age 38) candidate
+            Logic.filterTooOld ignore (Age 38) candidate
         match result with
         | Valid -> Assert.Fail()
         | Error e -> Assert.Pass()
@@ -77,7 +77,7 @@ type LogicTests() =
         let candidate =
             LogicTests.candidate (20, "Hans")
         let result =
-            Logic.filterByNames (["Carsten"] |> Set.ofList) candidate
+            Logic.filterByNames ignore (["Carsten"] |> Set.ofList) candidate
         match result with
         | Valid -> Assert.Pass()
         | Error e -> Assert.Fail(e |> string)
@@ -87,7 +87,7 @@ type LogicTests() =
         let candidate =
             LogicTests.candidate (30, "Carsten")
         let result =
-            Logic.filterByNames (["Carsten"] |> Set.ofList) candidate
+            Logic.filterByNames ignore (["Carsten"] |> Set.ofList) candidate
         match result with
         | Valid -> Assert.Fail()
         | Error e -> Assert.Pass()
