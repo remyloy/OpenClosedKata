@@ -3,22 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kunde1.BewerberAuswahl.UI", "BewerberAuswahlApp\Kunde1.BewerberAuswahl.UI.csproj", "{7E56F9E3-4309-40D7-A075-919FCE95A08C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonLibrary", "PersonLibrary\PersonLibrary.csproj", "{488FF15B-59E3-4130-8BCD-80EB3CDD033B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kunde2.BewerberAuswahl.UI", "BewerberAuswahlApp2\Kunde2.BewerberAuswahl.UI.csproj", "{B7222870-021F-47E8-8C42-DDD27443563E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.PersonLibrary", "PersonLibraryTest\Test.PersonLibrary.csproj", "{7B490DE6-8918-4886-8DED-24713636CBB4}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{E7523FE5-CC29-4CE1-93FB-F8EDD2FDB12B}"
 	ProjectSection(SolutionItems) = preProject
 		Übungsbeschreibung.txt = Übungsbeschreibung.txt
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kunde1.BewerberAuswahl.Test.UI", "Test.BewerberAuswahlApp\Kunde1.BewerberAuswahl.Test.UI.csproj", "{98111D1B-5723-4F98-8AD1-390131099A16}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kunde2.BewerberAuswahl.Test.UI", "Test.BewerberAuswahlApp2\Kunde2.BewerberAuswahl.Test.UI.csproj", "{2F491167-E492-45EE-B070-FA4D3798A7EF}"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "BewerberAuswahl.Model", "Model\BewerberAuswahl.Model.fsproj", "{CDDDF45C-335A-423C-85D2-6B5419667FEF}"
 EndProject
@@ -36,30 +24,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7E56F9E3-4309-40D7-A075-919FCE95A08C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7E56F9E3-4309-40D7-A075-919FCE95A08C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7E56F9E3-4309-40D7-A075-919FCE95A08C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7E56F9E3-4309-40D7-A075-919FCE95A08C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{488FF15B-59E3-4130-8BCD-80EB3CDD033B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{488FF15B-59E3-4130-8BCD-80EB3CDD033B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{488FF15B-59E3-4130-8BCD-80EB3CDD033B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{488FF15B-59E3-4130-8BCD-80EB3CDD033B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B7222870-021F-47E8-8C42-DDD27443563E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B7222870-021F-47E8-8C42-DDD27443563E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B7222870-021F-47E8-8C42-DDD27443563E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B7222870-021F-47E8-8C42-DDD27443563E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7B490DE6-8918-4886-8DED-24713636CBB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7B490DE6-8918-4886-8DED-24713636CBB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7B490DE6-8918-4886-8DED-24713636CBB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7B490DE6-8918-4886-8DED-24713636CBB4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{98111D1B-5723-4F98-8AD1-390131099A16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{98111D1B-5723-4F98-8AD1-390131099A16}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{98111D1B-5723-4F98-8AD1-390131099A16}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{98111D1B-5723-4F98-8AD1-390131099A16}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2F491167-E492-45EE-B070-FA4D3798A7EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2F491167-E492-45EE-B070-FA4D3798A7EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2F491167-E492-45EE-B070-FA4D3798A7EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2F491167-E492-45EE-B070-FA4D3798A7EF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CDDDF45C-335A-423C-85D2-6B5419667FEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CDDDF45C-335A-423C-85D2-6B5419667FEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CDDDF45C-335A-423C-85D2-6B5419667FEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
