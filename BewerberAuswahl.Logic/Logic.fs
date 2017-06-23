@@ -98,3 +98,22 @@ module Logic =
                     candidate.Name |> Blacklisted |> Error
                 | false ->
                     Valid
+
+    let combine : List<FilterCriteria> -> FilterCriteria =
+        let folder result filter =
+            match result.Validation with
+            | Valid ->                
+                { result with Validation = filter result.Value }
+            | Error _ ->
+                result
+        fun filters ->
+            fun candidate ->
+                let validationResult =
+                    filters
+                    |> List.fold folder { Value = candidate; Validation = Valid }
+                validationResult.Validation
+
+    let validate : Filter =
+        fun filter candidates ->
+            candidates
+            |> List.map (fun candidate -> { Value = candidate; Validation = filter candidate })

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.6
+VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kunde1.BewerberAuswahl.UI", "BewerberAuswahlApp\Kunde1.BewerberAuswahl.UI.csproj", "{7E56F9E3-4309-40D7-A075-919FCE95A08C}"
 EndProject
@@ -25,6 +25,8 @@ EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "BewerberAuswahl.Logic", "BewerberAuswahl.Logic\BewerberAuswahl.Logic.fsproj", "{D6F0A958-C6C8-4505-9D3B-FB7A86E9B0BC}"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "BewerberAuswahl.Logic.Tests", "BewerberAuswahl.Logic.Tests\BewerberAuswahl.Logic.Tests.fsproj", "{7C258943-4C70-4F07-BCDF-88E09F3C1D7B}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "BewerberAuswahl.Kunde1", "BewerberAuswahl.Kunde1\BewerberAuswahl.Kunde1.fsproj", "{1A81DEA3-B35A-486A-A6EC-7B2B6B3F8A8D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -68,6 +70,10 @@ Global
 		{7C258943-4C70-4F07-BCDF-88E09F3C1D7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C258943-4C70-4F07-BCDF-88E09F3C1D7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C258943-4C70-4F07-BCDF-88E09F3C1D7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A81DEA3-B35A-486A-A6EC-7B2B6B3F8A8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A81DEA3-B35A-486A-A6EC-7B2B6B3F8A8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A81DEA3-B35A-486A-A6EC-7B2B6B3F8A8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A81DEA3-B35A-486A-A6EC-7B2B6B3F8A8D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

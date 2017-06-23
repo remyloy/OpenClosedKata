@@ -1,7 +1,6 @@
 ﻿namespace BewerberAuswahl
 
 type Age = Age of int
-
 type Email = Email of string
 
 type Candidate =
@@ -30,5 +29,6 @@ type TryCreateCandidate = int -> string -> Option<string> -> Option<Candidate>
 
 type ParseCSV = string -> List<Candidate>
 type FilterCriteria = Candidate -> ValidationResult
+type CombineFilters = List<FilterCriteria> -> FilterCriteria
 type Filter = FilterCriteria -> List<Candidate> -> List<ValidatedCandidate>
 type GenerateOutput = List<ValidatedCandidate> -> unit
